@@ -1,0 +1,11 @@
+{
+  "name": "hindiscript",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Abhay07/hindiscript.git",
+  "author": "Abhay Srivastav <abhaysrivastav007@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "i18next": "^21.9.2"
+  }
+}

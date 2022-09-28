@@ -1,5 +1,4 @@
 import {mapper, hindiScriptRegex, hindiScriptKeyWords} from "./mapping.js";
-const worker = new Worker('worker.js');
 
 const sampleCode = `
 //Sample code. RUN ka button dabayein
@@ -51,9 +50,9 @@ varna{
         createHints(currentInputText)
     })
 
-    console.log = function(text){
-        logger.innerText = text;
-    }
+    // console.log = function(text){
+    //     logger.innerText = text;
+    // }
 
     hintElem.addEventListener('click',e=>{
         const currentTextPosition = hindiScriptElem.value.lastIndexOf(currentInputText);
@@ -62,6 +61,11 @@ varna{
         hindiScriptElem.value = newCodeText;
         hindiScriptElem.focus();
         hideHint();
+    })
+
+    hindiScriptElem.addEventListener('contextmenu',(e)=>{
+        e.preventDefault();
+        console.log(e.pageX, e.pageY);
     })
 
     function createHints(text){
