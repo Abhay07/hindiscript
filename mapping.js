@@ -1,7 +1,7 @@
 const mapping = {
-    "maanaKi":"let",
-    "agar":"if",
-    "varna":"else",
+    "maanteHain":"let",
+    "yadi":"if",
+    "anyatha":"else",
     "likho":"console.log",
     "jabtak":"for"
 }
@@ -17,7 +17,6 @@ hindiScriptKeyWords.forEach((n,i)=>{
     }
 });
 hindiScriptRegex = new RegExp(hindiScriptRegex, 'g');
-console.log(hindiScriptRegex);
 
 const mapper = (key) => {
     if(mapping[key]){

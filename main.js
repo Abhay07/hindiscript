@@ -1,14 +1,15 @@
 import {mapper, hindiScriptRegex, hindiScriptKeyWords} from "./mapping.js";
+const worker = new Worker('worker.js');
 
 const sampleCode = `
 //Sample code. RUN ka button dabayein
 
 
-maanaKi x = 5;
-agar(x>2){
+maanteHain x = 5;
+yadi(x>2){
     likho('x 5 se bada hai');
 }
-varna{
+anyatha{
     likho('x 5 se chhota hai');
 }
 `;
