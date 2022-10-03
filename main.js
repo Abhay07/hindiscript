@@ -1,20 +1,25 @@
-import {mapper, hindiScriptRegex, hindiScriptKeyWords} from "./mapping.js";
+import {mapper, hindiScriptRegex, hindiScriptKeyWords } from "./mapping.js";
+import { hindiMapping, tamilMapping, hindiSampleCode, tamilSampleCode } from "./language.js";
 const worker = new Worker('worker.js');
+let SELECTED_LANGUAGE = 'HINDI';
 
-const sampleCode = `
-//Sample code. RUN ka button dabayein
-
-
-maanteHain x = 5;
-yadi(x>2){
-    likho('x 5 se bada hai');
+let sampleCode = '';
+if(SELECTED_LANGUAGE === 'HINDI'){
+    sampleCode = hindiSampleCode;
 }
-anyatha{
-    likho('x 5 se chhota hai');
-}
-`;
 
 (function hindiScript(){
+    document.querySelector("#language-selection").addEventListener("change",(e)=>{
+        SELECTED_LANGUAGE = e.target.value;
+        if(SELECTED_LANGUAGE === 'HINDI'){
+            sampleCode = hindiSampleCode;
+        }
+        else if(SELECTED_LANGUAGE === 'TAMIL'){
+            sampleCode = tamilSampleCode;
+        }
+        hindiScriptElem.value = sampleCode;
+        console.log(e.target.value);
+    })
     const hindiScriptElem = document.querySelector('.hindiscript-container textarea');
     const javascriptElem = document.querySelector('.javascript-container code');
     const logger = document.querySelector('.logger');
@@ -29,7 +34,6 @@ anyatha{
     document.querySelector('.run-code-btn').addEventListener('click', function(){
         const hindiCode = hindiScriptElem.value;
         const javascriptCode = hindiCode.replace(hindiScriptRegex, mapper);
-        console.log(javascriptCode)
         javascriptElem.innerText = javascriptCode;
         try{
             eval(javascriptCode);

@@ -1,12 +1,12 @@
-const mapping = {
-    "maanteHain":"let",
-    "yadi":"if",
-    "anyatha":"else",
-    "likho":"console.log",
-    "jabtak":"for"
-}
+import {
+    hindiMapping,
+    tamilMapping,
+    hindiSampleCode,
+    tamilSampleCode
+} from './language.js';
 
-const hindiScriptKeyWords = Object.keys(mapping);
+
+const hindiScriptKeyWords = Object.keys(hindiMapping);
 let hindiScriptRegex = '';
 hindiScriptKeyWords.forEach((n,i)=>{
     if(i === hindiScriptKeyWords.length - 1){
@@ -19,8 +19,27 @@ hindiScriptKeyWords.forEach((n,i)=>{
 hindiScriptRegex = new RegExp(hindiScriptRegex, 'g');
 
 const mapper = (key) => {
-    if(mapping[key]){
-        return mapping[key];
+    if(hindiMapping[key]){
+        return hindiMapping[key];
     }
   }
-export { mapper, hindiScriptRegex, hindiScriptKeyWords };
+
+
+  const tamilScriptKeyWords = Object.keys(tamilMapping);
+  let tamilScriptRegex = '';
+  tamilScriptKeyWords.forEach((n,i)=>{
+      if(i === tamilScriptKeyWords.length - 1){
+          tamilScriptRegex += `(${n})`;
+      }
+      else{
+          tamilScriptRegex = `(${n})|`
+      }
+  });
+  tamilScriptRegex = new RegExp(tamilScriptRegex, 'g');
+  
+const tamilMapper = (key) => {
+    if(tamilMapping[key]){
+        return tamilMapping[key];
+    }
+}
+export { mapper, tamilMapper, hindiScriptRegex, hindiScriptKeyWords, tamilScriptKeyWords, tamilScriptRegex };

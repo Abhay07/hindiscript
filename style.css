@@ -75,3 +75,14 @@ footer{
     background-color: transparent;
     cursor: pointer;
 }
+
+
+.selection-container{
+    width:50%;
+    text-align:left;
+    padding: 10px 0;
+}
+
+@media screen and (max-width: 768px) {
+
+}
