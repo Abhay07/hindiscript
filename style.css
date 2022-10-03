@@ -10,7 +10,7 @@ body{
 }
 
 .container.code{
-    height:80vh;
+    height:60vh;
 }
 
 .console-container > div{
@@ -84,5 +84,7 @@ footer{
 }
 
 @media screen and (max-width: 768px) {
-
+    .container.code{
+        height:˝calc(50vh - 40px);
+    }
 }

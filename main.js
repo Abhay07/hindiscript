@@ -1,5 +1,12 @@
-import {mapper, hindiScriptRegex, hindiScriptKeyWords } from "./mapping.js";
-import { hindiMapping, tamilMapping, hindiSampleCode, tamilSampleCode } from "./language.js";
+import {hindiMapper, hindiScriptRegex, hindiScriptKeyWords, tamilScriptRegex, tamilMapper, gujaratiScriptKeyWords, kannadaScriptRegex } from "./mapping.js";
+import {  hindiSampleCode } from "./languages/hindi.js";
+import {  tamilSampleCode } from "./languages/tamil.js";
+import {  gujaratiSampleCode } from "./languages/gujarati.js";
+import {  marathiSampleCode } from "./languages/marathi.js";
+import {  teluguSampleCode } from "./languages/telugu.js";
+import {  kannadaSampleCode } from "./languages/kannada.js";
+
+
 const worker = new Worker('worker.js');
 let SELECTED_LANGUAGE = 'HINDI';
 
@@ -9,17 +16,6 @@ if(SELECTED_LANGUAGE === 'HINDI'){
 }
 
 (function hindiScript(){
-    document.querySelector("#language-selection").addEventListener("change",(e)=>{
-        SELECTED_LANGUAGE = e.target.value;
-        if(SELECTED_LANGUAGE === 'HINDI'){
-            sampleCode = hindiSampleCode;
-        }
-        else if(SELECTED_LANGUAGE === 'TAMIL'){
-            sampleCode = tamilSampleCode;
-        }
-        hindiScriptElem.value = sampleCode;
-        console.log(e.target.value);
-    })
     const hindiScriptElem = document.querySelector('.hindiscript-container textarea');
     const javascriptElem = document.querySelector('.javascript-container code');
     const logger = document.querySelector('.logger');
@@ -31,9 +27,53 @@ if(SELECTED_LANGUAGE === 'HINDI'){
     hindiScriptElem.value = sampleCode;
     hindiScriptElem.focus();
     getLikes();
+    document.querySelector("#language-selection").addEventListener("change",(e)=>{
+        SELECTED_LANGUAGE = e.target.value;
+        if(SELECTED_LANGUAGE === 'HINDI'){
+            sampleCode = hindiSampleCode;
+        }
+        else if(SELECTED_LANGUAGE === 'KANNADA'){
+            sampleCode = kannadaSampleCode;
+        }
+        else if(SELECTED_LANGUAGE === 'TAMIL'){
+            sampleCode = tamilSampleCode;
+        }
+        else if(SELECTED_LANGUAGE === 'MARATHI'){
+            sampleCode = marathiSampleCode;
+        }
+        else if(SELECTED_LANGUAGE === 'TELUGU'){
+            sampleCode = teluguSampleCode;
+        }
+        else if(SELECTED_LANGUAGE === 'GUJARATI'){
+            sampleCode = gujaratiSampleCode;
+        }
+        hindiScriptElem.value = sampleCode;
+        javascriptElem.innerText = '';
+    })
     document.querySelector('.run-code-btn').addEventListener('click', function(){
-        const hindiCode = hindiScriptElem.value;
-        const javascriptCode = hindiCode.replace(hindiScriptRegex, mapper);
+        let hindiCode,  javascriptCode;
+        javascriptElem.innerText = '';
+        switch(SELECTED_LANGUAGE){
+            case 'HINDI':
+                hindiCode = hindiScriptElem.value;
+                javascriptCode = hindiCode.replace(hindiScriptRegex, hindiMapper);
+                break;
+            case 'TAMIL':
+                hindiCode = hindiScriptElem.value;
+                javascriptCode = hindiCode.replace(tamilScriptRegex, tamilMapper)
+            case 'TELUGU':
+                    hindiCode = hindiScriptElem.value;
+                    javascriptCode = hindiCode.replace(teluguScriptRegex, teluguMapper)
+            case 'MARATHI':
+                hindiCode = hindiScriptElem.value;
+                javascriptCode = hindiCode.replace(marathiScriptRegex, marathiMapper)
+            case 'GUJARATI':
+                hindiCode = hindiScriptElem.value;
+                javascriptCode = hindiCode.replace(gujaratiScriptRegex, gujaratiMapper)
+            case 'KANNADA':
+            hindiCode = hindiScriptElem.value;
+            javascriptCode = hindiCode.replace(kannadaScriptRegex, kannadaMapper)
+        }
         javascriptElem.innerText = javascriptCode;
         try{
             eval(javascriptCode);
@@ -54,10 +94,6 @@ if(SELECTED_LANGUAGE === 'HINDI'){
         currentInputText += e.key;
         createHints(currentInputText)
     })
-
-    // console.log = function(text){
-    //     logger.innerText = text;
-    // }
 
     hintElem.addEventListener('click',e=>{
         const currentTextPosition = hindiScriptElem.value.lastIndexOf(currentInputText);
