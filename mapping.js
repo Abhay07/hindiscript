@@ -1,8 +1,8 @@
 import { hindiMapping } from './languages/hindi.js';
 import { tamilMapping } from './languages/tamil.js';
 import { teluguMapping } from './languages/telugu.js';
-import { kanndaMapping } from './languages/kannada';
-import { gujaratiMapping } from './languages/gujarati';
+import { kannadaMapping } from './languages/kannada.js';
+import { gujaratiMapping } from './languages/gujarati.js';
 import { marathiMapping } from './languages/marathi.js';
 
 //Hindi Regex
@@ -58,23 +58,23 @@ teluguKeyWords.forEach((n,i)=>{
 teluguScriptRegex = new RegExp(teluguScriptRegex, 'g');
 
 const teluguMapper = (key) => {
-  if(teuguMapping[key]){
+  if(teluguMapping[key]){
       return teluguMapping[key];
   }
 }
 
 //Gujarati Regex
-const gujaratiKeyWords = Object.keys(gujaratiMapping);
-let gujaratiRegex = '';
-gujaratiKeyWords.forEach((n,i)=>{
-    if(i === (gujaratiKeyWords.length - 1)){
-        gujaratiRegex += `(${n})`;
+const gujaratiScriptKeyWords = Object.keys(gujaratiMapping);
+let gujaratiScriptRegex = '';
+gujaratiScriptKeyWords.forEach((n,i)=>{
+    if(i === (gujaratiScriptKeyWords.length - 1)){
+        gujaratiScriptRegex += `(${n})`;
     }
     else{
-        gujaratiRegex += `(${n})|`
+        gujaratiScriptRegex += `(${n})|`
     }
 });
-gujaratiRegex = new RegExp(gujaratiRegex, 'g');
+gujaratiScriptRegex = new RegExp(gujaratiScriptRegex, 'g');
 
 const gujaratiMapper = (key) => {
   if(gujaratiMapping[key]){
@@ -102,21 +102,21 @@ const marathiMapper = (key) => {
 }
 
 //Kannada Regex
-const kannadaKeyWords = Object.keys(kannadaMappping);
+const kannadaKeyWords = Object.keys(kannadaMapping);
 let kannadaScriptRegex = '';
-kannadaScriptKeyWords.forEach((n,i)=>{
-    if(i === (kannadaScriptKeyWords.length - 1)){
+kannadaKeyWords.forEach((n,i)=>{
+    if(i === (kannadaKeyWords.length - 1)){
         kannadaScriptRegex += `(${n})`;
     }
     else{
         kannadaScriptRegex += `(${n})|`
     }
 });
-kannadaScriptRegex = new RegExp(kannadaRegex, 'g');
+kannadaScriptRegex = new RegExp(kannadaScriptRegex, 'g');
 
 const kannadaMapper = (key) => {
   if(kannadaMapping[key]){
-      return kanndaMapping[key];
+      return kannadaMapping[key];
   }
 }
 
@@ -131,11 +131,12 @@ export { hindiScriptRegex,
     teluguKeyWords, 
     marathiScriptRegex, 
     marathiKeyWords,
-    gujaratiRegex, 
-    gujaratiKeyWords, 
+    gujaratiScriptRegex, 
+    gujaratiScriptKeyWords, 
     tamilMapper, 
     hindiMapper,
     gujaratiMapper,
     kannadaMapper,
     teluguMapper,
+    marathiMapper
 };

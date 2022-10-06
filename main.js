@@ -1,4 +1,4 @@
-import {hindiMapper, hindiScriptRegex, hindiScriptKeyWords, tamilScriptRegex, tamilMapper, gujaratiScriptKeyWords, kannadaScriptRegex } from "./mapping.js";
+import {hindiMapper, hindiScriptRegex, hindiScriptKeyWords, tamilScriptRegex, tamilMapper, gujaratiScriptKeyWords, kannadaScriptRegex, kannadaMapper, marathiScriptRegex, marathiMapper, gujaratiScriptRegex, gujaratiMapper, teluguScriptRegex, teluguMapper } from "./mapping.js";
 import {  hindiSampleCode } from "./languages/hindi.js";
 import {  tamilSampleCode } from "./languages/tamil.js";
 import {  gujaratiSampleCode } from "./languages/gujarati.js";
