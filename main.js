@@ -82,6 +82,11 @@ if(SELECTED_LANGUAGE === 'HINDI'){
             logger.innerText = err;
         }
     })
+    
+    console.log = function(text){
+        logger.innerText = '';
+        logger.innerText = text;
+    }
 
     hindiScriptElem.addEventListener('keyup',function(e){
         if(e.key === "Backspace" || e.key === "Shift" || e.key === ";" || e.key === "Meta"){
