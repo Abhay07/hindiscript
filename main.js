@@ -132,10 +132,10 @@ if(SELECTED_LANGUAGE === 'HINDI'){
     }
 
     likeButton.addEventListener('click',e=>{
-        favorite();
+        //favorite();
     })
 
-    function favorite(){
+    function getLikes(){
         fetch('https://firestore.googleapis.com/v1/projects/public-api-07/databases/(default)/documents/hindiscript-likes/kof97lbQ1IuuvgCHBfOh')
         .then(res=>res.json())
         .then(res=>{
