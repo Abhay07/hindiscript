@@ -11,7 +11,7 @@ const gujaratiSampleCode = `
 જો(x>2){
     વિટ('x 5 se bada hai');
 }
-anyatha{
+બીજુ{
     વિટ('x 5 se chhota hai');
 }
 `
