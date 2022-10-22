@@ -61,18 +61,23 @@ if(SELECTED_LANGUAGE === 'HINDI'){
             case 'TAMIL':
                 hindiCode = hindiScriptElem.value;
                 javascriptCode = hindiCode.replace(tamilScriptRegex, tamilMapper)
+                break;
             case 'TELUGU':
                     hindiCode = hindiScriptElem.value;
                     javascriptCode = hindiCode.replace(teluguScriptRegex, teluguMapper)
+                    break;
             case 'MARATHI':
                 hindiCode = hindiScriptElem.value;
                 javascriptCode = hindiCode.replace(marathiScriptRegex, marathiMapper)
+                break;
             case 'GUJARATI':
                 hindiCode = hindiScriptElem.value;
                 javascriptCode = hindiCode.replace(gujaratiScriptRegex, gujaratiMapper)
+                break;
             case 'KANNADA':
             hindiCode = hindiScriptElem.value;
             javascriptCode = hindiCode.replace(kannadaScriptRegex, kannadaMapper)
+            break;
         }
         javascriptElem.innerText = javascriptCode;
         try{
@@ -82,7 +87,7 @@ if(SELECTED_LANGUAGE === 'HINDI'){
             logger.innerText = err;
         }
     })
-    
+
     console.log = function(text){
         logger.innerText = '';
         logger.innerText = text;
@@ -132,7 +137,9 @@ if(SELECTED_LANGUAGE === 'HINDI'){
     }
 
     likeButton.addEventListener('click',e=>{
-        //favorite();
+        fetch('https://bjjhj-787865.firebaseio.com/users/bnjjhjhj/name.json')
+        .then(res=>console.log(res))
+        .catch(err=>console.log(err));
     })
 
     function getLikes(){
@@ -143,4 +150,16 @@ if(SELECTED_LANGUAGE === 'HINDI'){
         })
         .catch(err=>{})
     }
+
+    function updateLikes(){
+        fetch('http://localhost:7778/update',{
+            method:'PUT'
+        })
+        .finally(res=>{
+
+        })
+    }
+    updateLikes();
+
+
 })();
