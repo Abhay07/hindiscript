@@ -143,7 +143,7 @@ if(SELECTED_LANGUAGE === 'HINDI'){
     })
 
     function getLikes(){
-        fetch('https://firestore.googleapis.com/v1/projects/public-api-07/databases/(default)/documents/hindiscript-likes/kof97lbQ1IuuvgCHBfOh')
+        fetch('http://192.168.29.64/')
         .then(res=>res.json())
         .then(res=>{
             likedByText.innerText = res?.fields?.likes?.integerValue;
