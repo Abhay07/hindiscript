@@ -143,7 +143,9 @@ if(SELECTED_LANGUAGE === 'HINDI'){
         .then(res=>{
           //console.log(res);
         })
-        .catch(err=>console.log(err));
+        .catch(err=>{
+          //console.log(err)
+        });
     })
 
     function getLikes(){
@@ -154,7 +156,7 @@ if(SELECTED_LANGUAGE === 'HINDI'){
 	  likedByText.innerHTML = likes.toString();	
         })
         .catch(err=>{
-        	console.log(err)
+        	//console.log(err)
         });
     }
     getLikes();
