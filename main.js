@@ -139,7 +139,7 @@ if(SELECTED_LANGUAGE === 'HINDI'){
     likeButton.addEventListener('click',e=>{
         const likes = Number(likedByText.innerHTML);
         likedByText.innerHTML = (likes+1).toString();
-        fetch('http://hindiscript.abhikalp.org/update')
+        fetch('https://hindiscript.abhikalp.org/update')
         .then(res=>{
           //console.log(res);
         })
@@ -147,7 +147,7 @@ if(SELECTED_LANGUAGE === 'HINDI'){
     })
 
     function getLikes(){
-        fetch('http://hindiscript.abhikalp.org')
+        fetch('https://hindiscript.abhikalp.org')
         .then(res=>res.text())
         .then(res=>{
 	  const likes = Number(res);
