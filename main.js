@@ -141,7 +141,7 @@ if(SELECTED_LANGUAGE === 'HINDI'){
         likedByText.innerHTML = (likes+1).toString();
         fetch('http://hindiscript.abhikalp.org/update')
         .then(res=>{
-          console.log(res);
+          //console.log(res);
         })
         .catch(err=>console.log(err));
     })
@@ -153,7 +153,9 @@ if(SELECTED_LANGUAGE === 'HINDI'){
 	  const likes = Number(res);
 	  likedByText.innerHTML = likes.toString();	
         })
-        .catch(err=>console.log(err));
+        .catch(err=>{
+        	console.log(err)
+        });
     }
     getLikes();
 
