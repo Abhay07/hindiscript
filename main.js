@@ -137,29 +137,25 @@ if(SELECTED_LANGUAGE === 'HINDI'){
     }
 
     likeButton.addEventListener('click',e=>{
-        fetch('https://bjjhj-787865.firebaseio.com/users/bnjjhjhj/name.json')
-        .then(res=>console.log(res))
+        const likes = Number(likedByText.innerHTML);
+        likedByText.innerHTML = (likes+1).toString();
+        fetch('http://hindiscript.abhikalp.org/update')
+        .then(res=>{
+          console.log(res);
+        })
         .catch(err=>console.log(err));
     })
 
     function getLikes(){
-        fetch('http://192.168.29.64/')
-        .then(res=>res.json())
+        fetch('http://hindiscript.abhikalp.org')
+        .then(res=>res.text())
         .then(res=>{
-            likedByText.innerText = res?.fields?.likes?.integerValue;
+	  const likes = Number(res);
+	  likedByText.innerHTML = likes.toString();	
         })
-        .catch(err=>{})
+        .catch(err=>console.log(err));
     }
-
-    function updateLikes(){
-        fetch('http://localhost:7778/update',{
-            method:'PUT'
-        })
-        .finally(res=>{
-
-        })
-    }
-    updateLikes();
+    getLikes();
 
 
 })();
