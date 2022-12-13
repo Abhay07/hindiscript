@@ -83,6 +83,17 @@ footer{
     padding: 10px 0;
 }
 
+.npm-logo{
+    height:20px;
+    margin-left: 10px;
+}
+
+.npm-logo-container{
+    display: flex;
+    justify-content: center;
+    line-height: 16px;
+}
+
 @media screen and (max-width: 768px) {
     .container.code{
         height:˝calc(50vh - 40px);
